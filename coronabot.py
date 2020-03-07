@@ -46,7 +46,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    # we do not want the bot to reply to itself
     if message.author == client.user:
         return
 
@@ -62,42 +61,24 @@ async def on_message(message):
 # !cases command
     total_cases = getCases()
     cases_text = "There are currently " + total_cases + " total cases of Coronavirus worldwide. :mask:"
-    if message.content == '!cases':
-        response = cases_text
 
 # !deaths command
     total_deaths = getDeaths()
     deaths_text = total_deaths + " people have died from Coronavirus so far. :skull:"
-    if message.content == '!deaths':
-        response = deaths_text
 
 # !recovered command
     total_recovered = getRecovered()
     recovered_text = total_recovered + " people have recovered from Coronavirus so far. :angel_tone1:"
 
-# !hello command
-    shocked_text = ":open_mouth:"
-
-# !ThanksCoronaBot command
-    thanks_text = "You're welcome dude."
-
 # Send message based on command
-    if message.content == "!scary":
-        response = shocked_text
     elif message.content == "!cases":
         response = cases_text
     elif message.content == "!deaths":
         response = deaths_text
     elif message.content == "!recovered":
         response = recovered_text
-    elif message.content == "!ThanksCoronaBot":
-        response = thanks_text
     elif message.content == "!cmds":
         response = "Commands available: !scary, !cases, !deaths, !recovered"
-    elif message.content == "!FuckCoronaBot":
-        response = "Hippity Hoppity, you are now Coronavirus' property."
     await message.channel.send(response)
-
-
 
 client.run(TOKEN)
