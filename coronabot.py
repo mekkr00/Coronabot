@@ -71,14 +71,14 @@ async def on_message(message):
     recovered_text = total_recovered + " people have recovered from Coronavirus so far. :angel_tone1:"
 
 # Send message based on command
-    elif message.content == "!cases":
+    if message.content == "!cases":
         response = cases_text
     elif message.content == "!deaths":
         response = deaths_text
     elif message.content == "!recovered":
         response = recovered_text
     elif message.content == "!cmds":
-        response = "Commands available: !scary, !cases, !deaths, !recovered"
+        response = "Commands available: !cases, !deaths, !recovered"
     await message.channel.send(response)
 
 client.run(TOKEN)
